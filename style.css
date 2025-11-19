@@ -1,0 +1,82 @@
+        *{
+            scroll-padding: 60px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes gradient {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .nav-scrolled {
+            background-color: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(96, 113, 246, 0.1);
+        }
+
+        .fade-in-observer {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in-observer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .code-block {
+            background: linear-gradient(-45deg, #1a1a2a, #161622, #1e1e2e, #2a2a3a);
+            background-size: 400% 400%;
+            animation: gradient 8s ease infinite;
+        }
+
+        .bg-dark-card-variant {
+            background-color: #161622;
+        }
+
+        .bg-dark-section {
+            background-color: #111119;
+        }
