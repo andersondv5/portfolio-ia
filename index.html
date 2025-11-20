@@ -4,62 +4,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anderson Silva - Desenvolvedor de IA</title>
+    <title>Anderson Silva - Desenvolvedor Especializado em IA</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="https://img.icons8.com/fluency/48/artificial-intelligence.png">
-    <link rel="stylesheet" href="style.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#6071F6',
-                        secondary: '#9CA3AF',
-                        accent: '#6071F6',
                         dark: {
-                            bg: '#0f0f0f',
-                            card: '#1a1a2a',
-                            text: '#F1F5F9'
+                            bg: '#000000',
+                            card: '#0A0A0A',
+                            text: '#FFFFFF'
                         }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
+                    spacing: {
+                        '128': '32rem',
+                    },
                     animation: {
                         'fade-in': 'fadeIn 0.8s ease-in-out',
                         'slide-up': 'slideUp 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.5s ease-out',
                         'float': 'float 3s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'gradient': 'gradient 3s ease infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(30px)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            }
+                        },
+                        scaleIn: {
+                            '0%': {
+                                opacity: '0',
+                                transform: 'scale(0.9)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'scale(1)'
+                            }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
                     }
                 }
             }
         }
     </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-<body class="font-sans bg-dark-bg text-dark-text">
-    <!-- Navegação -->
-    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4">
+        .fade-in-observer {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-observer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-scrolled {
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+        }
+
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #404040;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #525252;
+        }
+
+        .accent-hover:hover {
+            color: #FFFFFF;
+            border-color: #FFFFFF;
+        }
+
+        .accent-bg {
+            background-color: #1A1A1A;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #FFFFFF 0%, #A0A0A0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-dark-bg text-dark-text antialiased">
+    <!-- Navegação Monocromática -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 py-4">
+        <div class="container mx-auto px-6">
             <div class="flex justify-between items-center">
-                <a href="index.html" class="text-xl font-bold text-white">Anderson Silva</a>
+                <a href="#hero" class="text-xl font-bold tracking-tight transition-all duration-300 hover:text-white">
+                    Anderson Silva
+                </a>
 
-                <div class="hidden md:flex space-x-8">
+                <div class="hidden md:flex space-x-10">
                     <a href="#sobre"
-                        class="text-gray-300 hover:text-accent transition-colors duration-300 font-medium">Sobre</a>
+                        class="text-gray-400 font-medium hover:text-white transition-all duration-300 transform hover:-translate-y-1">Sobre</a>
                     <a href="#habilidades"
-                        class="text-gray-300 hover:text-accent transition-colors duration-300 font-medium">Habilidades</a>
+                        class="text-gray-400 font-medium hover:text-white transition-all duration-300 transform hover:-translate-y-1">Habilidades</a>
                     <a href="#projetos"
-                        class="text-gray-300 hover:text-accent transition-colors duration-300 font-medium">Projetos</a>
-                    <a href="#formacao"
-                        class="text-gray-300 hover:text-accent transition-colors duration-300 font-medium">Formação</a>
+                        class="text-gray-400 font-medium hover:text-white transition-all duration-300 transform hover:-translate-y-1">Projetos</a>
                     <a href="#contato"
-                        class="text-gray-300 hover:text-accent transition-colors duration-300 font-medium">Contato</a>
+                        class="text-gray-400 font-medium hover:text-white transition-all duration-300 transform hover:-translate-y-1">Contato</a>
                 </div>
 
-                <button id="mobile-menu-button" class="md:hidden text-gray-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="mobile-menu-button"
+                    class="md:hidden text-gray-400 hover:text-white transition-colors duration-300">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -68,673 +190,402 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 bg-dark-bg z-30 hidden md:hidden">
-        <div class="flex flex-col items-center justify-center h-full space-y-8">
-            <a href="#sobre" class="text-2xl font-medium text-gray-300 hover:text-accent transition-colors">Sobre</a>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-dark-bg z-40 hidden md:hidden flex items-center justify-center">
+        <div class="flex flex-col items-center space-y-10">
+            <a href="#sobre"
+                class="text-2xl font-medium text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110">Sobre</a>
             <a href="#habilidades"
-                class="text-2xl font-medium text-gray-300 hover:text-accent transition-colors">Habilidades</a>
+                class="text-2xl font-medium text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110">Habilidades</a>
             <a href="#projetos"
-                class="text-2xl font-medium text-gray-300 hover:text-accent transition-colors">Projetos</a>
-            <a href="#formacao"
-                class="text-2xl font-medium text-gray-300 hover:text-accent transition-colors">Formação</a>
+                class="text-2xl font-medium text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110">Projetos</a>
             <a href="#contato"
-                class="text-2xl font-medium text-gray-300 hover:text-accent transition-colors">Contato</a>
+                class="text-2xl font-medium text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110">Contato</a>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center pt-16 pb-8 md:pt-0 bg-gradient-to-br from-dark-bg to-dark-section">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="fade-in-observer">
-                    <div
-                        class="inline-flex items-center px-4 py-2 rounded-full bg-blue-900/30 text-blue-300 text-sm font-medium mb-6">
-                        <span class="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse"></span>
-                        Disponível para projetos freelancer
-                    </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                        Anderson
-                        <span class="text-accent">Silva</span>
-                    </h1>
-                    <h2 class="text-xl md:text-2xl text-accent font-normal mt-4">
-                        Desenvolvedor Especializado em Agentes de IA
-                    </h2>
-                    <p class="text-lg md:text-xl text-gray-400 mt-6 leading-relaxed">
-                        Desenvolvo soluções inteligentes com Python, Framework Agno e LLMs,
-                        criando agentes de IA que transformam ideias em realidade.
-                    </p>
-                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                        <a href="#projetos"
-                            class="bg-accent text-white px-8 py-4 rounded-lg font-medium hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center shadow-lg shadow-blue-500/25">
-                            Ver Projetos
-                            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </a>
-                        <a href="#contato"
-                            class="border border-gray-800 text-gray-300 px-8 py-4 rounded-lg font-medium hover:border-accent hover:text-accent transition-all duration-300 inline-flex items-center justify-center">
-                            Entrar em Contato
-                        </a>
-                    </div>
-
-                    <div class="mt-12 grid grid-cols-3 gap-6">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-accent">5+</div>
-                            <div class="text-sm text-gray-400">Projetos Pessoais</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-accent">3</div>
-                            <div class="text-sm text-gray-400">Tecnologias Dominadas</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-accent">100%</div>
-                            <div class="text-sm text-gray-400">Foco em Qualidade</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="fade-in-observer hidden lg:block">
-                    <div class="relative">
-                        <div class="code-block rounded-2xl p-8 shadow-2xl border border-gray-800">
-                            <div class="flex space-x-2 mb-6">
-                                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-                                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                            </div>
-
-                            <div class="space-y-4 font-mono text-sm">
-                                <div class="flex items-center">
-                                    <span class="text-purple-400 mr-4">1</span>
-                                    <span class="text-blue-400">class</span>
-                                    <span class="text-green-400 ml-2">AIAgent</span>
-                                    <span class="text-gray-400">:</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="text-purple-400 mr-4">2</span>
-                                    <span class="text-gray-400 ml-4">def</span>
-                                    <span class="text-yellow-300 ml-2">__init__</span>
-                                    <span class="text-gray-400">(</span>
-                                    <span class="text-gray-300">self</span>
-                                    <span class="text-gray-400">):</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="text-purple-400 mr-4">3</span>
-                                    <span class="text-gray-400 ml-8">self</span>
-                                    <span class="text-gray-400">.</span>
-                                    <span class="text-gray-300">framework</span>
-                                    <span class="text-gray-400">=</span>
-                                    <span class="text-green-300">"Agno"</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="text-purple-400 mr-4">4</span>
-                                    <span class="text-gray-400 ml-8">self</span>
-                                    <span class="text-gray-400">.</span>
-                                    <span class="text-gray-300">llm</span>
-                                    <span class="text-gray-400">=</span>
-                                    <span class="text-green-300">"GPT-4"</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="text-purple-400 mr-4">5</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="text-purple-400 mr-4">6</span>
-                                    <span class="text-gray-400 ml-4">def</span>
-                                    <span class="text-yellow-300 ml-2">process_message</span>
-                                    <span class="text-gray-400">(</span>
-                                    <span class="text-gray-300">self, message</span>
-                                    <span class="text-gray-400">):</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="text-purple-400 mr-4">7</span>
-                                    <span class="text-gray-400 ml-8">return</span>
-                                    <span class="text-blue-400 ml-2">self</span>
-                                    <span class="text-gray-400">.</span>
-                                    <span class="text-gray-300">llm</span>
-                                    <span class="text-gray-400">.</span>
-                                    <span class="text-yellow-300">generate</span>
-                                    <span class="text-gray-400">(</span>
-                                    <span class="text-gray-300">message</span>
-                                    <span class="text-gray-400">)</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div
-                            class="absolute -top-4 -right-4 w-20 h-20 bg-accent rounded-full opacity-20 animate-pulse-slow">
-                        </div>
-                        <div
-                            class="absolute -bottom-6 -left-6 w-16 h-16 bg-blue-600 rounded-full opacity-30 animate-float">
-                        </div>
-                        <div class="absolute top-1/2 -right-8 w-12 h-12 bg-blue-700 rounded-lg opacity-25 animate-pulse"
-                            style="animation-delay: 1s"></div>
-                    </div>
-
-                    <div class="mt-8 flex flex-wrap justify-center gap-4">
-                        <div class="flex items-center bg-dark-card px-4 py-2 rounded-lg border border-gray-800">
-                            <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
-                            <span class="text-sm text-gray-300">Python</span>
-                        </div>
-                        <div class="flex items-center bg-dark-card px-4 py-2 rounded-lg border border-gray-800">
-                            <div class="w-3 h-3 bg-accent rounded-full mr-2"></div>
-                            <span class="text-sm text-gray-300">Agno</span>
-                        </div>
-                        <div class="flex items-center bg-dark-card px-4 py-2 rounded-lg border border-gray-800">
-                            <div class="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
-                            <span class="text-sm text-gray-300">LLMs</span>
-                        </div>
-                        <div class="flex items-center bg-dark-card px-4 py-2 rounded-lg border border-gray-800">
-                            <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
-                            <span class="text-sm text-gray-300">ChatGPT</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Hero Section Monocromático -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-16 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white rounded-full filter blur-3xl animate-float"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gray-500 rounded-full filter blur-3xl animate-float"
+                style="animation-delay: 1.5s;"></div>
         </div>
-    </section>
 
-    <!-- Sobre -->
-    <section id="sobre" class="py-20 bg-dark-card">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="fade-in-observer">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-8">Sobre Mim</h2>
-                    <div class="space-y-4 text-lg text-gray-400 leading-relaxed">
-                        <p>
-                            Sou um desenvolvedor apaixonado por inteligência artificial, com foco na criação
-                            de agentes de IA inteligentes e sistemas autônomos. Minha jornada começou com
-                            Python e evoluiu para o framework Agno e modelos de linguagem de grande porte.
-                        </p>
-                        <p>
-                            Acredito no poder da IA para revolucionar a forma como interagimos com a tecnologia
-                            e resolvemos problemas complexos. Meu trabalho envolve desde a concepção de arquiteturas
-                            até a implementação de agentes capazes de entender contexto e tomar decisões autônomas.
-                        </p>
-                    </div>
-
-                    <div class="mt-8 space-y-3">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-gray-300">Especialista em desenvolvimento de agentes de IA</span>
-                        </div>
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-gray-300">Python avançado e framework Agno</span>
-                        </div>
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-accent mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="text-gray-300">Integração com LLMs e ChatGPT</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-center lg:justify-end">
-                    <div class="relative">
-                        <div
-                            class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-accent to-blue-700 rounded-full overflow-hidden shadow-xl animate-float shadow-blue-500/25">
-                            <div class="w-full h-full bg-gray-800 flex items-center justify-center">
-                                <img src="img/image.png" alt="">
-                            </div>
-                        </div>
-                        <div
-                            class="absolute -bottom-4 -right-4 w-24 h-24 bg-dark-card rounded-2xl shadow-lg flex items-center justify-center border border-gray-800">
-                            <div class="text-center">
-                                <div class="text-2xl font-bold text-accent">5+</div>
-                                <div class="text-sm text-gray-400">Projetos</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Habilidades -->
-    <section id="habilidades" class="py-20 bg-dark-section">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 fade-in-observer">Habilidades & Expertise</h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center fade-in-observer">
                 <div
-                    class="bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-800 fade-in-observer hover:border-blue-500/30">
-                    <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 text-gray-300 text-sm font-medium mb-8 border border-gray-800">
+                    <span class="w-2 h-2 bg-white rounded-full mr-2 pulse-dot"></span>
+                    Disponível para novos projetos
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    Anderson
+                    <span class="gradient-text block mt-2">Silva</span>
+                </h1>
+
+                <h2 class="text-xl md:text-2xl text-gray-400 font-normal mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Desenvolvedor Especializado em
+                    <span class="text-white font-medium">Agentes de IA</span> e
+                    <span class="text-white font-medium">Sistemas Inteligentes</span>
+                </h2>
+
+                <p class="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
+                    Transformo ideias complexas em soluções de IA elegantes e funcionais,
+                    combinando expertise técnica com visão estratégica para criar sistemas
+                    que aprendem, adaptam-se e evoluem.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-5 justify-center">
+                    <a href="#projetos"
+                        class="bg-white text-black px-8 py-4 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover-lift shadow-lg shadow-white/10 inline-flex items-center justify-center group">
+                        <span>Explorar Projetos</span>
+                        <svg class="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="#contato"
+                        class="border border-gray-800 text-gray-300 px-8 py-4 rounded-lg font-medium transition-all duration-300 accent-hover hover-lift inline-flex items-center justify-center">
+                        Iniciar Conversa
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#sobre" class="text-gray-500 hover:text-white transition-colors duration-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Sobre Monocromático -->
+    <section id="sobre" class="py-28 bg-dark-card relative">
+        <div class="section-divider w-full mb-20"></div>
+
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto fade-in-observer">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Sobre Mim</h2>
+                    <div class="w-24 h-1 bg-white mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-6">
+                        <p class="text-lg text-gray-400 leading-relaxed">
+                            Sou um desenvolvedor apaixonado por
+                            <span class="text-white font-medium">inteligência artificial</span>,
+                            com foco especial na criação de agentes de IA inteligentes e sistemas autônomos.
+                            Minha jornada começou com Python e evoluiu para frameworks especializados
+                            como Agno e modelos de linguagem de grande porte.
+                        </p>
+
+                        <p class="text-lg text-gray-400 leading-relaxed">
+                            Acredito no poder transformador da IA para revolucionar a forma como
+                            interagimos com a tecnologia e resolvemos problemas complexos. Meu trabalho
+                            envolve desde a concepção de arquiteturas inovadoras até a implementação
+                            de agentes capazes de entender contexto, aprender com interações e tomar
+                            decisões autônomas.
+                        </p>
+
+                        <div class="pt-4">
+                            <a href="#contato"
+                                class="inline-flex items-center text-white font-medium hover:text-gray-300 transition-colors duration-300 group">
+                                <span>Vamos conversar sobre seu projeto</span>
+                                <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div
+                        class="accent-bg p-8 rounded-2xl border border-gray-800 hover-lift transition-all duration-500">
+                        <h3 class="text-xl font-semibold mb-6 text-white">Minha Especialização</h3>
+
+                        <div class="space-y-5">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-white">Agentes de IA Autônomos</h4>
+                                    <p class="text-gray-400 text-sm mt-1">Sistemas que aprendem, decidem e agem de forma
+                                        independente</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-white">Framework Agno</h4>
+                                    <p class="text-gray-400 text-sm mt-1">Desenvolvimento de sistemas escaláveis e de
+                                        alto desempenho</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-white">Integração com LLMs</h4>
+                                    <p class="text-gray-400 text-sm mt-1">ChatGPT, GPT-4 e modelos de linguagem
+                                        avançados</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider w-full mt-20"></div>
+    </section>
+
+    <!-- Habilidades Monocromáticas -->
+    <section id="habilidades" class="py-28 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 fade-in-observer">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Expertise & Habilidades</h2>
+                <p class="text-xl text-gray-500 max-w-2xl mx-auto">
+                    Domínio técnico combinado com visão estratégica para soluções de IA inovadoras
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div
+                    class="bg-dark-card p-8 rounded-2xl border border-gray-800 hover-lift transition-all duration-500 fade-in-observer group">
+                    <div
+                        class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">Agentes de IA</h3>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors duration-300">Agentes de
+                        IA</h3>
                     <p class="text-gray-400 leading-relaxed">
-                        Desenvolvimento de agentes inteligentes autônomos capazes de tomar decisões,
-                        aprender com interações e executar tarefas complexas de forma independente.
+                        Desenvolvimento de agentes inteligentes autônomos capazes de tomar decisões complexas,
+                        aprender com interações e executar tarefas sofisticadas de forma independente.
                     </p>
                 </div>
 
                 <div
-                    class="bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-800 fade-in-observer hover:border-blue-500/30">
-                    <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="bg-dark-card p-8 rounded-2xl border border-gray-800 hover-lift transition-all duration-500 fade-in-observer group">
+                    <div
+                        class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">Framework Agno</h3>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors duration-300">Framework
+                        Agno</h3>
                     <p class="text-gray-400 leading-relaxed">
                         Especialista no framework Agno para construção de sistemas de IA escaláveis
-                        e eficientes, com arquiteturas bem definidas e alto desempenho.
+                        e eficientes, com arquiteturas bem definidas e performance otimizada.
                     </p>
                 </div>
 
                 <div
-                    class="bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-800 fade-in-observer hover:border-blue-500/30">
-                    <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="bg-dark-card p-8 rounded-2xl border border-gray-800 hover-lift transition-all duration-500 fade-in-observer group">
+                    <div
+                        class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-white/20 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
                             </path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">Python Avançado</h3>
+                    <h3 class="text-2xl font-bold mb-4 group-hover:text-white transition-colors duration-300">Python
+                        Avançado</h3>
                     <p class="text-gray-400 leading-relaxed">
                         Desenvolvimento em Python com foco em criação de agentes de IA, processamento de dados
-                        e criação de APIs robustas para integração de sistemas de IA.
-                    </p>
-                </div>
-
-                <div
-                    class="bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-800 fade-in-observer hover:border-blue-500/30">
-                    <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">LLMs & ChatGPT</h3>
-                    <p class="text-gray-400 leading-relaxed">
-                        Integração e fine-tuning de Large Language Models, criação de chatbots inteligentes
-                        e sistemas de processamento de linguagem natural avançados.
-                    </p>
-                </div>
-
-                <div
-                    class="bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-800 fade-in-observer hover:border-blue-500/30">
-                    <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Arquitetura de IA</h3>
-                    <p class="text-gray-400 leading-relaxed">
-                        Design de arquiteturas escaláveis para sistemas de inteligência artificial,
-                        considerando performance, manutenibilidade e evolução tecnológica.
-                    </p>
-                </div>
-
-                <div
-                    class="bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-800 fade-in-observer hover:border-blue-500/30">
-                    <div class="w-12 h-12 bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                            </path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-4">Sistemas Autônomos</h3>
-                    <p class="text-gray-400 leading-relaxed">
-                        Criação de sistemas que operam de forma independente, com capacidade de
-                        auto-aprimoramento e adaptação a diferentes cenários e requisitos.
+                        complexos e criação de APIs robustas para integração de sistemas inteligentes.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projetos -->
-    <section id="projetos" class="py-20 bg-dark-card">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 fade-in-observer">Projetos em Destaque</h2>
+    <!-- Projetos Monocromáticos -->
+    <section id="projetos" class="py-28 bg-dark-card relative">
+        <div class="section-divider w-full mb-20"></div>
 
-            <div class="space-y-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 fade-in-observer">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Projetos em Destaque</h2>
+                <p class="text-xl text-gray-500 max-w-2xl mx-auto">
+                    Soluções inovadoras que demonstram o poder da IA aplicada a desafios reais
+                </p>
+            </div>
+
+            <div class="space-y-24 max-w-6xl mx-auto">
                 <!-- Projeto 1 -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center fade-in-observer">
-                    <div class="relative group">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center fade-in-observer group">
+                    <div class="relative overflow-hidden rounded-2xl hover-lift transition-all duration-500">
                         <div
-                            class="aspect-video bg-gradient-to-br from-accent to-blue-700 rounded-2xl overflow-hidden shadow-lg transform group-hover:scale-105 transition-transform duration-300 shadow-blue-500/25">
-                            <div class="w-full h-full bg-gray-800 flex items-center justify-center">
-                                <span class="text-white text-lg">Projeto em Andamento. <br>
-                                    Estará pronto em breve!</span>
+                            class="aspect-video bg-gradient-to-br from-white/10 to-gray-700/30 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black/40"></div>
+                            <div class="relative z-10 text-center p-8">
+                                <span class="text-white text-xl font-medium">Projeto em Desenvolvimento</span>
+                                <p class="text-gray-300 mt-2">Em breve: Agente de IA para WhatsApp</p>
+                            </div>
+                            <div
+                                class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/80 to-transparent flex items-end justify-center p-6">
+                                <span class="text-white font-medium mb-4">Visualização em breve</span>
                             </div>
                         </div>
                     </div>
 
                     <div>
-                        <span class="text-accent font-medium">Agente de IA + WhatsApp</span>
-                        <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4">Agente de IA para Atendimento no WhatsApp
-                            com Agno</h3>
-                        <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                        <span class="text-white font-medium text-lg">Agente de IA + WhatsApp</span>
+                        <h3 class="text-3xl md:text-4xl font-bold mt-2 mb-6">Sistema de Atendimento Automatizado com
+                            Agno</h3>
+                        <p class="text-gray-400 text-lg leading-relaxed mb-8">
                             Desenvolvimento de um agente de IA integrado ao WhatsApp para atendimento automático
-                            de clientes, capaz de entender contextos complexos, responder perguntas frequentes
-                            e escalar para atendimento humano quando necessário.
+                            de clientes em escala. Capaz de entender contextos complexos, responder perguntas frequentes
+                            com precisão e escalar para atendimento humano quando necessário, proporcionando
+                            experiência contínua e personalizada.
                         </p>
 
-                        <div class="flex flex-wrap gap-2 mb-6">
+                        <div class="flex flex-wrap gap-3 mb-8">
                             <span
-                                class="bg-dark-section text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">Python</span>
+                                class="bg-black/40 text-gray-300 px-4 py-2 rounded-lg text-sm border border-gray-800 accent-hover transition-colors duration-300">Python</span>
                             <span
-                                class="bg-dark-section text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">Agno
+                                class="bg-black/40 text-gray-300 px-4 py-2 rounded-lg text-sm border border-gray-800 accent-hover transition-colors duration-300">Agno
                                 Framework</span>
                             <span
-                                class="bg-dark-section text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">WhatsApp
+                                class="bg-black/40 text-gray-300 px-4 py-2 rounded-lg text-sm border border-gray-800 accent-hover transition-colors duration-300">WhatsApp
                                 API</span>
                             <span
-                                class="bg-dark-section text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">OpenAI</span>
-                            <span
-                                class="bg-dark-section text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">ChatGPT</span>
+                                class="bg-black/40 text-gray-300 px-4 py-2 rounded-lg text-sm border border-gray-800 accent-hover transition-colors duration-300">OpenAI
+                                GPT-4</span>
                         </div>
 
-                        <div class="flex gap-4">
-                            <a href="#"
-                                class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center">
-                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg>
-                                Ver Demo
-                            </a>
-                            <a href="#"
-                                class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center">
-                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                </svg>
-                                Código Fonte
-                            </a>
-                        </div>
+                        <a href="#contato"
+                            class="inline-flex items-center text-white font-medium hover:text-gray-300 transition-colors duration-300 group">
+                            <span>Interessado em类似 soluções?</span>
+                            <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
                     </div>
                 </div>
 
                 <!-- Projeto 2 -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center fade-in-observer">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center fade-in-observer group">
                     <div class="lg:order-2">
-                        <div
-                            class="aspect-video bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl overflow-hidden shadow-lg transform group-hover:scale-105 transition-transform duration-300 shadow-blue-500/25">
+                        <div class="relative overflow-hidden rounded-2xl hover-lift transition-all duration-500">
                             <div
-                                class="w-full h-full bg-gray-800 flex items-center justify-center group-hover:scale-105">
-                                <span class="text-white text-lg">Projeto em Andamento. <br>
-                                    Estará pronto logo mais!</span>
+                                class="aspect-video bg-gradient-to-br from-gray-600/20 to-gray-700/30 flex items-center justify-center relative overflow-hidden">
+                                <div class="absolute inset-0 bg-black/40"></div>
+                                <div class="relative z-10 text-center p-8">
+                                    <span class="text-white text-xl font-medium">Projeto em Desenvolvimento</span>
+                                    <p class="text-gray-300 mt-2">Em breve: Analisador de Currículos com IA</p>
+                                </div>
+                                <div
+                                    class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/80 to-transparent flex items-end justify-center p-6">
+                                    <span class="text-white font-medium mb-4">Visualização em breve</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="lg:order-1">
-                        <span class="text-accent font-medium">Processamento de Documentos</span>
-                        <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4">Analisador de Currículo com IA</h3>
-                        <p class="text-gray-400 text-lg leading-relaxed mb-6">
+                        <span class="text-white font-medium text-lg">Processamento Inteligente</span>
+                        <h3 class="text-3xl md:text-4xl font-bold mt-2 mb-6">Analisador de Currículo com IA Avançada
+                        </h3>
+                        <p class="text-gray-400 text-lg leading-relaxed mb-8">
                             Sistema inteligente para análise automática de currículos utilizando processamento
-                            de linguagem natural. Capaz de extrair informações relevantes, classificar candidatos
-                            por compatibilidade e fornecer insights para processos seletivos.
+                            de linguagem natural de última geração. Capaz de extrair informações relevantes,
+                            classificar candidatos por compatibilidade com precisão e fornecer insights
+                            detalhados para otimizar processos seletivos e reduzir viés humano.
                         </p>
 
-                        <div class="flex flex-wrap gap-2 mb-6">
+                        <div class="flex flex-wrap gap-3 mb-8">
                             <span
-                                class="bg-dark-section text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">Python</span>
+                                class="bg-black/40 text-gray-300 px-4 py-2 rounded-lg text-sm border border-gray-800 accent-hover transition-colors duration-300">Python</span>
                             <span
-                                class="bg-dark-section text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">NLP</span>
+                                class="bg-black/40 text-gray-300 px-4 py-2 rounded-lg text-sm border border-gray-800 accent-hover transition-colors duration-300">NLP</span>
                             <span
-                                class="bg-dark-section text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">FastAPI</span>
+                                class="bg-black/40 text-gray-300 px-4 py-2 rounded-lg text-sm border border-gray-800 accent-hover transition-colors duration-300">FastAPI</span>
                             <span
-                                class="bg-dark-section text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">Transformers</span>
-                            <span
-                                class="bg-dark-section text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-800">PDF
-                                Processing</span>
+                                class="bg-black/40 text-gray-300 px-4 py-2 rounded-lg text-sm border border-gray-800 accent-hover transition-colors duration-300">Transformers</span>
                         </div>
 
-                        <div class="flex gap-4">
-                            <a href="#"
-                                class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center">
-                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                    </path>
-                                </svg>
-                                Ver Demo
-                            </a>
-                            <a href="#"
-                                class="text-gray-300 hover:text-accent transition-colors duration-300 flex items-center">
-                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                </svg>
-                                Código Fonte
-                            </a>
-                        </div>
+                        <a href="#contato"
+                            class="inline-flex items-center text-white font-medium hover:text-gray-300 transition-colors duration-300 group">
+                            <span>Tem um projeto similar?</span>
+                            <svg class="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="section-divider w-full mt-20"></div>
     </section>
 
-    <!-- Formação -->
-    <section id="formacao" class="py-20 bg-dark-section">
+    <!-- Contato Monocromático -->
+    <section id="contato" class="py-28 relative">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 fade-in-observer">Formação & Certificações</h2>
-
-            <div class="max-w-4xl mx-auto">
-                <!-- Formação 1 -->
-                <div class="relative pl-8 md:pl-0 mb-12 fade-in-observer">
-                    <div class="md:grid md:grid-cols-4 md:gap-8">
-                        <div class="md:col-span-1 mb-4 md:mb-0">
-                            <div class="text-accent font-medium">2025</div>
-                        </div>
-                        <div class="md:col-span-3">
-                            <div class="bg-dark-card p-6 rounded-2xl shadow-sm border border-gray-800">
-                                <h3 class="text-xl font-semibold mb-2">Especialização em IA e Automação de Processos
-                                </h3>
-                                <p class="text-lg text-gray-300 mb-3">Plataforma Asimov Academy</p>
-                                <ul class="text-gray-400 space-y-2">
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor"
-                                            viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        Engenharia de Agentes de IA
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor"
-                                            viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        Automação de Processos com N8N
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor"
-                                            viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        Arquitetura de Sistemas de IA
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="absolute left-0 md:left-1/4 top-0 bottom-0 w-0.5 bg-gray-800 transform -translate-x-1/2 hidden md:block">
-                    </div>
-                    <div
-                        class="absolute left-0 top-6 w-4 h-4 bg-accent rounded-full border-4 border-dark-bg transform -translate-x-1/2 shadow hidden md:block">
-                    </div>
-                </div>
-
-                <!-- Formação 2 -->
-                <div class="relative pl-8 md:pl-0 mb-12 fade-in-observer">
-                    <div class="md:grid md:grid-cols-4 md:gap-8">
-                        <div class="md:col-span-1 mb-4 md:mb-0">
-                            <div class="text-accent font-medium">2024</div>
-                        </div>
-                        <div class="md:col-span-3">
-                            <div class="bg-dark-card p-6 rounded-2xl shadow-sm border border-gray-800">
-                                <h3 class="text-xl font-semibold mb-2">Certificação em Desenvolvimento Python Avançado
-                                </h3>
-                                <p class="text-lg text-gray-300 mb-3">Instituição de Ensino Online - UDEMY</p>
-                                <ul class="text-gray-400 space-y-2">
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor"
-                                            viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        Programação Assíncrona e Concorrente
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor"
-                                            viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        Desenvolvimento de APIs RESTful
-                                    </li>
-                                    <li class="flex items-start">
-                                        <svg class="w-5 h-5 text-accent mr-2 mt-0.5 flex-shrink-0" fill="currentColor"
-                                            viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd"
-                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd"></path>
-                                        </svg>
-                                        Testes e Boas Práticas de Código
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="absolute left-0 top-6 w-4 h-4 bg-accent rounded-full border-4 border-dark-bg transform -translate-x-1/2 shadow hidden md:block">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção "Além do Código" -->
-    <section class="py-20 bg-dark-section">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Além do Código</h2>
-
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <!-- Lado Esquerdo - Filosofia -->
-                    <div class="space-y-6">
-                        <div class="bg-dark-card/50 p-6 rounded-2xl border border-gray-800">
-                            <h3 class="text-xl font-semibold text-accent mb-3">🚀 Minha Motivação</h3>
-                            <p class="text-gray-300">
-                                Acredito que a IA deve amplificar o potencial humano, não substituí-lo.
-                                Minha paixão está em criar sistemas que entendem nuance e contexto.
-                            </p>
-                        </div>
-
-                        <div class="bg-dark-card/50 p-6 rounded-2xl border border-gray-800">
-                            <h3 class="text-xl font-semibold text-accent mb-3">💡 Fora do Terminal</h3>
-                            <p class="text-gray-300">
-                                Quando não estou programando, você me encontra pedalando pela cidade,
-                                tocando violão ou mergulhando em filmes de ficção científica.
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Lado Direito - Interesses -->
-                    <div class="space-y-6">
-                        <div class="bg-dark-card/50 p-6 rounded-2xl border border-gray-800">
-                            <h3 class="text-xl font-semibold text-accent mb-3">🎧 No Meu Fone</h3>
-                            <p class="text-gray-300">
-                                Desde synthwave até podcasts de tecnologia. A música me ajuda a encontrar
-                                o estado de fluxo perfeito para programação criativa.
-                            </p>
-                        </div>
-
-                        <div class="bg-dark-card/50 p-6 rounded-2xl border border-gray-800">
-                            <h3 class="text-xl font-semibold text-accent mb-3">📚 Inspirações</h3>
-                            <p class="text-gray-300">
-                                "Meditações" de Marco Aurélio, os ensaios de Paul Graham,
-                                e as ideias do stoicismo aplicado à tecnologia.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quote no Final -->
-                <div class="mt-12 text-center">
-                    <blockquote class="text-xl text-gray-400 italic max-w-2xl mx-auto">
-                        "Visão sem execução é sonhar acordado."
-                        <footer class="text-lg text-accent mt-4 not-italic">— Bill Gates</footer>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato" class="py-20 bg-dark-card">
-        <div class="container mx-auto px-6">
-            <div class="max-w-2xl mx-auto text-center fade-in-observer">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Vamos Trabalhar Juntos</h2>
-                <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+            <div class="max-w-4xl mx-auto text-center fade-in-observer">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Vamos Criar Algo Incrível Juntos</h2>
+                <p class="text-xl text-gray-500 mb-12 leading-relaxed max-w-2xl mx-auto">
                     Estou sempre aberto a discutir novos projetos, ideias inovadoras e oportunidades
-                    para criar soluções de IA que façam a diferença.
+                    para criar soluções de IA que façam a diferença real.
                 </p>
 
-                <div class="mb-8">
+                <div class="mb-12">
                     <a href="mailto:anderson.dev.work@gmail.com"
-                        class="text-2xl font-semibold text-white hover:text-accent transition-colors duration-300">
+                        class="text-2xl md:text-3xl font-semibold text-white hover:text-gray-300 transition-colors duration-300 inline-block py-2">
                         anderson.dev.work@gmail.com
                     </a>
                 </div>
 
-                <div class="flex justify-center space-x-6">
+                <div class="flex justify-center space-x-8">
                     <a href="https://github.com/andersondv5" target="_blank"
-                        class="text-gray-400 hover:text-accent transition-colors duration-300 transform hover:scale-110">
+                        class="text-gray-500 hover:text-white transition-all duration-300 transform hover:scale-110 p-3 bg-dark-card rounded-lg hover-lift">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </svg>
                     </a>
                     <a href="https://www.linkedin.com/in/anderson-silvadev/" target="_blank"
-                        class="text-gray-400 hover:text-accent transition-colors duration-300 transform hover:scale-110">
+                        class="text-gray-500 hover:text-white transition-all duration-300 transform hover:scale-110 p-3 bg-dark-card rounded-lg hover-lift">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                             <path
                                 d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                    </a>
-                    <a href="https://instagram.com/anderson.silva300" target="_blank"
-                        class="text-gray-400 hover:text-accent transition-colors duration-300 transform hover:scale-110">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                         </svg>
                     </a>
                 </div>
@@ -742,158 +593,19 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 bg-gray-900 text-white">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div class="md:col-span-2">
-                    <h3 class="text-2xl font-bold mb-4">Anderson Silva</h3>
-                    <p class="text-gray-300 mb-4 max-w-md">
-                        Desenvolvedor especializado em agentes de IA, criando soluções inteligentes
-                        com Python, Framework Agno e LLMs para transformar ideias em realidade.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="https://github.com/andersondv5" target="_blank"
-                            class="text-gray-400 hover:text-white transition-colors duration-300">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/anderson-silvadev/" target="_blank"
-                            class="text-gray-400 hover:text-white transition-colors duration-300">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                            </svg>
-                        </a>
-                        <a href="https://instagram.com/anderson.silva300" target="_blank"
-                            class="text-gray-400 hover:text-white transition-colors duration-300">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#sobre"
-                                class="text-gray-400 hover:text-white transition-colors duration-300">Sobre</a></li>
-                        <li><a href="#habilidades"
-                                class="text-gray-400 hover:text-white transition-colors duration-300">Habilidades</a>
-                        </li>
-                        <li><a href="#projetos"
-                                class="text-gray-400 hover:text-white transition-colors duration-300">Projetos</a></li>
-                        <li><a href="#contato"
-                                class="text-gray-400 hover:text-white transition-colors duration-300">Contato</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Tecnologias</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>Python & Agno</li>
-                        <li>LLMs & ChatGPT</li>
-                        <li>Agentes de IA</li>
-                        <li>Inteligência Artificial</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pt-8 border-t border-gray-800 text-center">
-                <p class="text-gray-400 text-sm">
-                    © 2025 Anderson Silva. Todos os direitos reservados.
-                    <span class="block mt-1">Desenvolvido com paixão por IA e inovação.</span>
-                </p>
-            </div>
+    <!-- Footer Monocromático -->
+    <footer class="py-16 bg-dark-card border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-500 text-sm">
+                © 2025 Anderson Silva. Todos os direitos reservados.
+                <span class="block mt-1">Desenvolvido com paixão por IA e inovação.</span>
+            </p>
         </div>
     </footer>
 
-    <script>
-        // Navigation scroll effect
-        window.addEventListener('scroll', function () {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                nav.classList.add('nav-scrolled');
-            } else {
-                nav.classList.remove('nav-scrolled');
-            }
-        });
+    <script src="script.js">
 
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function () {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', function () {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            });
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Scroll animations with Intersection Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all elements with fade-in-observer class
-        document.querySelectorAll('.fade-in-observer').forEach(el => {
-            observer.observe(el);
-        });
     </script>
-
-    <!-- Botão Flutuante WhatsApp -->
-    <a href="https://wa.me/558398363906" target="_blank"
-        class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 group animate-float"
-        style="animation-duration: 3s;">
-        <!-- Ícone WhatsApp -->
-        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893c0-3.189-1.248-6.189-3.515-8.464" />
-        </svg>
-
-        <!-- Efeito de pulsar -->
-        <div class="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-20"></div>
-
-        <!-- Tooltip responsivo -->
-        <div
-            class="absolute right-16 bottom-0 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap hidden sm:block">
-            Fale comigo no WhatsApp
-            <div
-                class="absolute top-1/2 right-0 transform translate-x-1 -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45">
-            </div>
-        </div>
-    </a>
-    </div>
-    </a>
 </body>
 
 </html>

@@ -1,80 +1,90 @@
-     // Navigation scroll effect
-        window.addEventListener('scroll', function () {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                nav.classList.add('nav-scrolled');
-            } else {
-                nav.classList.remove('nav-scrolled');
-            }
+// ============================
+// NAVIGATION SCROLL EFFECT
+// ============================
+window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (!nav) return;
+
+    if (window.scrollY > 50) {
+        nav.classList.add('nav-scrolled', 'py-3');
+    } else {
+        nav.classList.remove('nav-scrolled', 'py-3');
+    }
+});
+
+// ============================
+// MOBILE MENU FUNCTIONALITY
+// ============================
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (!mobileMenu || !mobileMenuButton) return;
+
+    // Abrir/fechar menu mobile
+    mobileMenuButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Fechar menu ao clicar em links
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
         });
+    });
 
-        // Mobile menu toggle with smooth animations
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const closeMobileMenu = document.getElementById('close-mobile-menu');
-
-        function openMobileMenu() {
-            mobileMenu.classList.remove('hidden');
-            // Trigger the animation after a small delay
-            setTimeout(() => {
-                mobileMenu.classList.remove('opacity-0', 'translate-x-full');
-                mobileMenu.classList.add('opacity-100', 'translate-x-0');
-            }, 50);
-        }
-
-        function closeMobileMenuFunc() {
-            mobileMenu.classList.remove('opacity-100', 'translate-x-0');
-            mobileMenu.classList.add('opacity-0', 'translate-x-full');
-            // Hide after transition completes
-            setTimeout(() => {
+    // Fechar menu ao clicar fora
+    document.addEventListener('click', (event) => {
+        if (!mobileMenu.classList.contains('hidden')) {
+            const clickInsideMenu = mobileMenu.contains(event.target);
+            const clickOnButton = mobileMenuButton.contains(event.target);
+            if (!clickInsideMenu && !clickOnButton) {
                 mobileMenu.classList.add('hidden');
-            }, 500);
-        }
-
-        mobileMenuButton.addEventListener('click', openMobileMenu);
-        closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', closeMobileMenuFunc);
-        });
-
-        // Close mobile menu when pressing Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-                closeMobileMenuFunc();
             }
-        });
+        }
+    });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    // Fechar menu com ESC
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+        }
+    });
 
-        // Scroll animations with Intersection Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    // Evitar que cliques dentro do menu fechem ele
+    mobileMenu.addEventListener('click', (e) => e.stopPropagation());
+});
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+// ============================
+// SMOOTH SCROLLING
+// ============================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
 
-        // Observe all elements with fade-in-observer class
-        document.querySelectorAll('.fade-in-observer').forEach(el => {
-            observer.observe(el);
-        });
+// ============================
+// SCROLL ANIMATIONS (INTERSECTION OBSERVER)
+// ============================
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in-observer').forEach(el => {
+    observer.observe(el);
+});
